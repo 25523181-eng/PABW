@@ -1,0 +1,52 @@
+/* 1. Sembunyikan checkbox asli, buat label tampak seperti tombol */
+.pengalih-tema {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tombol-tema {
+  cursor: pointer;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  color: var(--color-fg);
+  font-size: var(--text-sm);
+  user-select: none;
+}
+
+/* 2. Jika OS Terang (Default) -> Centang tombol mengubah ke Mode GELAP */
+:root:has(#tema:checked) {
+  --color-bg:      #0F172A;
+  --color-fg:      #E2E8F0;
+  --color-surface: #1E293B;
+  --color-border:  #334155;
+  --color-primary: #7DA9F7;
+  --color-danger:  #FF8A8A;
+  --color-focus:   #FFC000;
+}
+
+/* 3. Jika OS Laptop GELAP -> Otomatis Gelap, dan Centang tombol mengubah ke Mode TERANG */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:      #0F172A;
+    --color-fg:      #E2E8F0;
+    --color-surface: #1E293B;
+    --color-border:  #334155;
+    --color-primary: #7DA9F7;
+    --color-danger:  #FF8A8A;
+    --color-focus:   #FFC000;
+  }
+
+  /* Saat OS Gelap & tombol dicentang -> Paksa kembalikan ke warna TERANG */
+  :root:has(#tema:checked) {
+    --color-bg:      var(--slate-50);
+    --color-fg:      var(--slate-950);
+    --color-surface: var(--slate-100);
+    --color-border:  var(--slate-300);
+    --color-primary: var(--indigo-700);
+    --color-danger:  var(--amber-700);
+    --color-focus:   var(--indigo-600);
+  }
+}
