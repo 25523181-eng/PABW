@@ -1,4 +1,27 @@
 :root {
-  --color-link: #0969da;       /* Lolos kontras WCAG AA (5.2:1) */
-  --color-link-hover: #044289; /* Warna saat kursor mengarah/fokus */
+  /* Palet Warna Indigo Tech (Lembar C.1) */
+  --color-bg: #f4f5f9;        /* Soft Cool Gray */
+  --color-fg: #111625;        /* Deep Indigo Dark */
+  --color-surface: #fafbfe;   /* Crisp Light Tint */
+  --color-border: #cbd5e1;    /* Slate Border */
+  --color-primary: #1d4ed8;   /* Royal Indigo Blue */
+  --color-danger: #c2410c;    /* Deep Amber Orange */
+  --color-focus: #2563eb;     /* Bright Blue Focus Outline */
+
+  /* Jarak, Sudut, Bayangan, dan Ukuran Huruf (Lembar C.2) */
+  --space-1: 0.2rem;
+  --space-2: 0.375rem;
+  --space-3: 0.625rem;
+  --space-4: 1.125rem;
+  --space-6: 1.75rem;
+
+  --radius-md: 0.375rem;
+  --radius-full: 50rem;
+
+  --shadow-1: 0 4px 6px -1px rgba(17, 22, 37, 0.08);
+
+  --text-sm: 0.8125rem;
+  --text-md: 0.9375rem;
+  --text-xl: 1.25rem;
+  --text-3xl: 2rem;
 }
