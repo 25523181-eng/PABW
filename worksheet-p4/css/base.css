@@ -67,3 +67,16 @@ button {
 * { margin: 0; }               /* hapus jarak bawaan; atur sendiri memakai gap */
  
 img { max-width: 100%; height: auto; display: block; }
+/* Garis fokus khusus navigasi papan ketik (tombol Tab) */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Menghilangkan outline default mouse tetapi mempertahankan :focus-visible */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible) {
+  outline: none;
+}
