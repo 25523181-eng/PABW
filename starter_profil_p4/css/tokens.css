@@ -1,0 +1,4 @@
+:root {
+  --color-link: #0969da;       /* Lolos kontras WCAG AA (5.2:1) */
+  --color-link-hover: #044289; /* Warna saat kursor mengarah/fokus */
+}
