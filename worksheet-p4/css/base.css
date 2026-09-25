@@ -1,3 +1,6 @@
+html {
+  font-size: 100%;
+}
 body {
   background-color: var(--color-bg);
   color: var(--color-fg);
@@ -57,3 +60,10 @@ button {
   border: none;
   cursor: pointer;
 }
+*, *::before, *::after {
+  box-sizing: border-box;      /* width sudah mencakup padding + border */
+}
+ 
+* { margin: 0; }               /* hapus jarak bawaan; atur sendiri memakai gap */
+ 
+img { max-width: 100%; height: auto; display: block; }
