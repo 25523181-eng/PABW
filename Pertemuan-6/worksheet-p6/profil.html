@@ -31,9 +31,10 @@
    <link rel="stylesheet" href="css/base.css"> 
    <link rel="stylesheet" href="css/layout.css"> 
    <link rel="stylesheet" href="css/komponen.css"> 
+   <link rel="stylesheet" href="css/responsif.css"> 
    <link rel="stylesheet" href="css/tema.css"> 
 </head>
-<body>
+<body class="page">
   <a class="lewati" href="#utama">Lewati ke konten utama</a>
 
   <header class="kepala">
@@ -60,7 +61,7 @@
       <figure class="foto">
         <!-- ISI 4 — pakai foto Anda sendiri dengan nama berkas yang sama,
              atau biarkan berkas contoh apa adanya. -->
-        <img src="media/foto-profil.pn"
+        <img src="media/foto-profil.png"
              alt="Foto diri Nama Anda memakai kemeja putih."
              width="480" height="480" loading="lazy">
         <figcaption>Foto profil — ganti dengan milik Anda sendiri.</figcaption>
@@ -71,7 +72,7 @@
       <p>Saya mahasiswa Program Studi S1 reguler Informatika Universitas Islam Indonesia.
          Saya tertarik pada pengembangan web, khususnya bagian tampilan css dan kerangka html
          karena di sana saya bisa bereksperimen dan membuat keputusan teknis langsung terlihat hasilnya.</p>
-
+       <div class="table-wrap" role="region" aria-label="Tabel kegiatan" tabindex="0">
       <table>
         <!-- ISI 6 — judul tabel dan isi minimal tiga baris. -->
         <caption>Kegiatan yang saya ikuti semester ini</caption>
@@ -100,6 +101,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </section>
 
     <section id="karya">
