@@ -51,3 +51,15 @@ console.log(judulProyek, judulProyek.length === daftarProyek.length); // true
 
 const terlamaDulu = [...daftarProyek].sort((a, b) => a.tahun - b.tahun);
 console.log(terlamaDulu[0].judul, "|", daftarProyek[0].judul); // Prototype Aption | LesGo
+
+const elemen = document.querySelector("#tentang h2");
+if (elemen !== null) {
+  console.log(elemen.textContent); // "Tentang saya"
+} else {
+  console.error('Elemen "#tentang h2" tidak ditemukan di HTML');
+}
+
+const nilaiNim = document.querySelector("#nim").value; // selalu teks
+console.log(typeof nilaiNim);         // "string"
+console.log(Number(nilaiNim) + 1);    // 25523182
+console.log(typeof Number(nilaiNim)); // "number"
