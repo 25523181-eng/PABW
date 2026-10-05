@@ -1,3 +1,4 @@
+
 .lewati {
   /* Gaya komponen skip link agar tersembunyi kecuali saat di-focus */
   position: absolute;
@@ -12,4 +13,5 @@
   padding: 8px 16px;
   z-index: 1000;
 }
+
 

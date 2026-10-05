@@ -31,7 +31,7 @@ time {
 }
 
 /* 4. Tautan (Link) & Aksesibilitas Focus */
-nav ul a {
+a {
   color: var(--color-primary);
 }
 
