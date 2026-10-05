@@ -21,6 +21,16 @@ function buatPerkenalan({ nama, peran }) {
 
 const formatKeahlian = (daftar) => daftar.join(" · ");
 
+// Menulis teks ke halaman, dengan pengaman bila elemen tidak ditemukan
+function pasangTeks(selektor, teks) {
+  const elemen = document.querySelector(selektor);
+  if (elemen === null) {
+    console.error(`Elemen "${selektor}" tidak ditemukan di HTML`);
+    return;
+  }
+  elemen.textContent = teks;
+}
+
 console.log(buatPerkenalan(profil));
 console.log(formatKeahlian(profil.keahlian));
 console.log(`${profil.nama} punya ${jumlahProyek} proyek.`);
@@ -52,14 +62,32 @@ console.log(judulProyek, judulProyek.length === daftarProyek.length); // true
 const terlamaDulu = [...daftarProyek].sort((a, b) => a.tahun - b.tahun);
 console.log(terlamaDulu[0].judul, "|", daftarProyek[0].judul); // Prototype Aption | LesGo
 
-const elemen = document.querySelector("#tentang h2");
-if (elemen !== null) {
-  console.log(elemen.textContent); // "Tentang saya"
+// Menampilkan data ke halaman
+document.title = `${profil.nama} — PABW 2026/2027`;
+pasangTeks("header h1", profil.nama);
+pasangTeks(".tagline", profil.peran);
+pasangTeks("#keahlian", `Keahlian: ${formatKeahlian(profil.keahlian)}`);
+
+const daftarKarya = document.querySelector("#karya ul");
+if (daftarKarya !== null) {
+  daftarKarya.replaceChildren(
+    ...daftarProyek.map((proyek) => {
+      const butir = document.createElement("li");
+      const status = proyek.selesai ? "" : " (sedang dikerjakan)";
+      butir.textContent = `${proyek.judul} — ${proyek.jenis}, ${proyek.tahun}${status}`;
+      return butir;
+    })
+  );
 } else {
-  console.error('Elemen "#tentang h2" tidak ditemukan di HTML');
+  console.error('Elemen "#karya ul" tidak ditemukan di HTML');
 }
 
-const nilaiNim = document.querySelector("#nim").value; // selalu teks
-console.log(typeof nilaiNim);         // "string"
-console.log(Number(nilaiNim) + 1);    // 25523182
-console.log(typeof Number(nilaiNim)); // "number"
+const infoKaki = document.querySelector(".kaki p");
+if (infoKaki !== null) {
+  const waktu = document.createElement("time");
+  waktu.dateTime = "2026";
+  waktu.textContent = "2026";
+  infoKaki.replaceChildren(`${profil.nama} · ${profil.nim} · `, waktu);
+} else {
+  console.error('Elemen ".kaki p" tidak ditemukan di HTML');
+}

@@ -30,3 +30,16 @@ Dalam pengerjaan tugas Praktikum Pertemuan 4 ini, saya menggunakan asisten AI (G
 * **Navigasi Hasil Lighthouse:** Membantu menemukan posisi indikator *Kontras Teks* pada bagian *Passed Audits* di DevTools untuk pengisian Lembar I.3.
 * **Penyusunan Deskripsi Evaluasi:** Membantu memformulasi kalimat deskriptif yang tepat dan ringkas untuk hasil uji manual (Lembar I.4) dan evaluasi struktur bagian baru (Lembar I.5).
 * **Pemecahan Masalah (Troubleshooting):** Menganalisis penyebab variabel warna token yang tidak berubah saat uji coba beralih ke Mode Gelap.
+## Pertemuan 8 — Deklarasi penggunaan AI
+
+**Dibantu AI:**
+- Struktur awal berkas app.js (data profil, fungsi, dan contoh array methods).
+- Penjelasan membaca pesan galat di Console dan contoh kasus galat untuk Lembar E.
+- Saran draf jawaban tiket keluar yang saya baca dan sesuaikan.
+
+**Saya kerjakan sendiri:**
+- Isi data profil dan daftar proyek (LesGo, Prototype Aption, SmartUMKM).
+- Menjalankan kode di Live Server, memeriksa hasil di Console, dan mengambil tangkapan layar.
+- Mencatat galat yang saya temui (E.5) dan memperbaikinya.
+- Mengisi tabel B.4, D.4, dan Lembar F dengan hasil yang saya lihat sendiri.
+- Commit dan push ke repositori.
