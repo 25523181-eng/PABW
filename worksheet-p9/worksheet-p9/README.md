@@ -43,3 +43,35 @@ Dalam pengerjaan tugas Praktikum Pertemuan 4 ini, saya menggunakan asisten AI (G
 - Mencatat galat yang saya temui (E.5) dan memperbaikinya.
 - Mengisi tabel B.4, D.4, dan Lembar F dengan hasil yang saya lihat sendiri.
 - Commit dan push ke repositori.
+## Pertemuan 9 — DOM, Event, dan Interaktivitas
+
+- **Nama**: Umar Abdillah
+- **NIM**: 25523181
+- **Kelas**: E
+- **Mata Kuliah**: Pengembangan Aplikasi Berbasis Web (PABW)
+
+---
+
+###  Ringkasan Pengerjaan
+Pada Pertemuan 9 ini, halaman profil dikembangkan agar lebih interaktif dan dinamis dengan menghubungkan data JavaScript ke DOM:
+1. **Render Data Dinamis:** Memuat dan menampilkan daftar proyek dari `app.js` ke elemen `#daftar` menggunakan `document.createElement()` dan `textContent`.
+2. **Event Delegation:** Memasang satu *event listener* pada elemen induk (`#filter`) memanfaatkan `event.target.closest("button")` untuk menyaring kategori proyek ("Semua", "Web", "Desain", "Aplikasi").
+3. **Manajemen State & Wadah:** Mengosongkan wadah (`wadah.textContent = ""`) setiap fungsi `render()` dipanggil untuk mencegah pembalikan/penggandaan kartu, serta mengontrol tampilan pesan saat kategori proyek kosong (`#pesan-kosong`).
+4. **Validasi Form Interaktif:** Menangani formulir kontak tanpa *reload* halaman (`event.preventDefault()`), memvalidasi setiap kolom (*input event*), menampilkan pesan galat aksesibel (`aria-invalid` & `aria-describedby`), serta menahan tombol kirim hingga seluruh masukan sah.
+
+---
+
+###  Deklarasi Penggunaan AI
+
+Sesuai ketentuan kejujuran akademik dan aturan PABW Pertemuan 9:
+
+1. **Bagian yang Dikerjakan Mandiri:**
+   - Menyusun kerangka elemen DOM pada `profil.html` (`#daftar`, `#filter`, `#pesan-kosong`, dan struktur form).
+   - Penanganan validasi formulir dan pencegahan perilaku bawaan peramban (*submit event*).
+   - Menjawab seluruh pertanyaan Lembar F (Tiket Keluar) serta pemeriksaan mandiri DevTools.
+
+2. **Bagian yang Dibantu oleh AI:**
+   - Meninjau dan memverifikasi kelengkapan kriteria checklist **Lembar F.1**.
+    - Penulisan fungsi logika murni dan manipulasi DOM pada `js/app.js` dan `js/dom.js`.
+   - Penerapan logika *event delegation* dan penyaringan array (`filter()`).
+   - Membantu memformulasikan struktur penulisan dokumentasi dan deklarasi AI untuk berkas `README.md`.
