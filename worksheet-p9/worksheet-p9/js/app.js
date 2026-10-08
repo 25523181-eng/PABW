@@ -70,19 +70,7 @@ pasangTeks("header h1", profil.nama);
 pasangTeks(".tagline", profil.peran);
 pasangTeks("#keahlian", `Keahlian: ${formatKeahlian(profil.keahlian)}`);
 
-const daftarKarya = document.querySelector("#karya ul");
-if (daftarKarya !== null) {
-  daftarKarya.replaceChildren(
-    ...daftarProyek.map((proyek) => {
-      const butir = document.createElement("li");
-      const status = proyek.selesai ? "" : " (sedang dikerjakan)";
-      butir.textContent = `${proyek.judul} — ${proyek.jenis}, ${proyek.tahun}${status}`;
-      return butir;
-    })
-  );
-} else {
-  console.error('Elemen "#karya ul" tidak ditemukan di HTML');
-}
+
 
 const infoKaki = document.querySelector(".kaki p");
 if (infoKaki !== null) {

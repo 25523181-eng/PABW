@@ -14,15 +14,16 @@ const inputPesan = document.querySelector("#pesan");
 function buatKartu(proyek) {
   const li = document.createElement("li");
   li.className = "kartu";
-  li.textContent = proyek.judul; 
+  const status = proyek.selesai ? "" : " (sedang dikerjakan)";
+  li.textContent = `${proyek.judul} — ${proyek.jenis}, ${proyek.tahun}${status}`;
   return li;
 }
 
 // B.2 + D.1 
 function render(daftar) {
-  wadah.textContent = "";            
+  wadah.textContent = "";
 
-  if (daftar.length === 0) {         
+  if (daftar.length === 0) {
     kosong.hidden = false;
     return;
   }
@@ -30,28 +31,32 @@ function render(daftar) {
 
   const fragmen = document.createDocumentFragment();
   daftar.forEach((proyek) => fragmen.append(buatKartu(proyek)));
-  wadah.append(fragmen);               
+  wadah.append(fragmen);
 }
-// C.2 
+
+// C.2
 function tandaiTombolAktif(tombolAktif) {
   document.querySelectorAll("#filter button").forEach((tombol) => {
     tombol.classList.toggle("aktif", tombol === tombolAktif);
   });
 }
 
-// C.1 
+// C.1
 barisFilter.addEventListener("click", (event) => {
   const tombol = event.target.closest("button");
-  if (!tombol) return; 
+  if (!tombol) return;
 
   const kategori = tombol.dataset.kategori;
   const terpilih = daftarProyek.filter(
-    (proyek) => kategori === "semua" || proyek.jenis === kategori
-  );
 
+    (proyek) => kategori === "semua" || proyek.jenis === kategori
+    
+  );
   tandaiTombolAktif(tombol);
   render(terpilih);
 });
+
+render(daftarProyek);
 // D.2 — validasi form
 const tombolKirim = form.querySelector('button[type="submit"]');
 form.noValidate = true; // tanpa ini, gelembung bawaan peramban muncul lebih dulu
