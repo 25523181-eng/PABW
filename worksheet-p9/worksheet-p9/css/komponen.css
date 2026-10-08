@@ -1,3 +1,7 @@
+.aktif {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
 
 .lewati {
   /* Gaya komponen skip link agar tersembunyi kecuali saat di-focus */

@@ -28,5 +28,23 @@ function render(daftar) {
 
 render(daftarProyek);
 
-console.log("jumlah kartu:", document.querySelectorAll("#daftar .kartu").length);
-console.log("kartu pertama:", document.querySelector("#daftar .kartu").textContent);
+// C.2 
+function tandaiTombolAktif(tombolAktif) {
+  document.querySelectorAll("#filter button").forEach((tombol) => {
+    tombol.classList.toggle("aktif", tombol === tombolAktif);
+  });
+}
+
+// C.1 
+barisFilter.addEventListener("click", (event) => {
+  const tombol = event.target.closest("button");
+  if (!tombol) return; 
+
+  const kategori = tombol.dataset.kategori;
+  const terpilih = daftarProyek.filter(
+    (proyek) => kategori === "semua" || proyek.jenis === kategori
+  );
+
+  tandaiTombolAktif(tombol);
+  render(terpilih);
+});
