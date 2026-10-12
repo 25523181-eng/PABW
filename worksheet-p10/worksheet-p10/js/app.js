@@ -82,16 +82,40 @@ if (infoKaki !== null) {
   console.error('Elemen ".kaki p" tidak ditemukan di HTML');
 }
 
+const wadahApi = document.querySelector("#daftar-api");
+const statusApi = document.querySelector("#status-api");
+
+export function gambar(daftar) {
+  wadahApi.textContent = "";            // kosongkan dulu, supaya kartu tidak berlipat
+
+  if (daftar.length === 0) {            // keadaan kosong
+    statusApi.textContent = "Belum ada notisia.";
+    return;
+  }
+
+  daftar.forEach(function (n) {
+    const kartu = document.createElement("article");
+    const judul = document.createElement("h3");
+    const isi = document.createElement("p");
+    judul.textContent = n.title;
+    isi.textContent = n.body;
+    kartu.append(judul, isi);
+    wadahApi.append(kartu);
+  });
+
+  statusApi.textContent = `Berhasil memuat ${daftar.length} data.`;
+}
+
 async function tampilkan() {
-  const status = document.querySelector("#status-api");
-  status.textContent = "Memuat...";
+  statusApi.textContent = "Memuat...";  // keadaan memuat
+  wadahApi.textContent = "";
   try {
     const daftar = await ambilNotisia();
-    status.textContent = `Berhasil memuat ${daftar.length} data.`;
-    console.log(daftar);
-  } catch (galat) {
-    status.textContent = "Gagal memuat data: " + galat.message;
+    gambar(daftar);                     // berhasil atau kosong
+  } catch (galat) {                     // keadaan gagal
+    statusApi.textContent = "Gagal memuat data: " + galat.message;
   }
 }
 
 tampilkan();
+//pencarian fetch
