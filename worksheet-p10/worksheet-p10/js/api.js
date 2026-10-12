@@ -1,4 +1,4 @@
-const ALAMAT = 'https://jsonplaceholder.typicode.com/posts';
+const ALAMAT = 'https://jsonplaceholder.typicode.com/posts?userId=9999';
 
 export async function ambilNotisia() {
   try {

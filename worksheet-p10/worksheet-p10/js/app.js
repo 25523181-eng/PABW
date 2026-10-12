@@ -117,5 +117,3 @@ async function tampilkan() {
   }
 }
 
-tampilkan();
-//pencarian fetch
