@@ -1,4 +1,4 @@
-import { muat } from "./api.js";
+import { ambilNotisia } from "./api.js";
 
 export const profil = {
   nama: "Umar Abdillah",
@@ -82,4 +82,16 @@ if (infoKaki !== null) {
   console.error('Elemen ".kaki p" tidak ditemukan di HTML');
 }
 
-muat().catch((galat) => console.error("Gagal memuat:", galat.message)); 
+async function tampilkan() {
+  const status = document.querySelector("#status-api");
+  status.textContent = "Memuat...";
+  try {
+    const daftar = await ambilNotisia();
+    status.textContent = `Berhasil memuat ${daftar.length} data.`;
+    console.log(daftar);
+  } catch (galat) {
+    status.textContent = "Gagal memuat data: " + galat.message;
+  }
+}
+
+tampilkan();
