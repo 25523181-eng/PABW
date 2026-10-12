@@ -75,3 +75,24 @@ Sesuai ketentuan kejujuran akademik dan aturan PABW Pertemuan 9:
     - Penulisan fungsi logika murni dan manipulasi DOM pada `js/app.js` dan `js/dom.js`.
    - Penerapan logika *event delegation* dan penyaringan array (`filter()`).
    - Membantu memformulasikan struktur penulisan dokumentasi dan deklarasi AI untuk berkas `README.md`.
+## Pertemuan 10 — JavaScript Asinkron: fetch, Promise, dan JSON
+
+- **API:** https://jsonplaceholder.typicode.com/posts (publik, tanpa kunci akses)
+- **Lapisan data:** `js/api.js` mengekspor `ambilNotisia()`; alamat hanya ditulis di sini.
+- **Tampilan:** `js/app.js` memanggil `ambilNotisia()` dan menggambar kartu ke `#daftar-api`.
+- **Keadaan antarmuka:** memuat, berhasil, gagal, kosong (teks di `#status-api`).
+- **Bukti:** tangkapan layar di folder `bukti/`.
+
+### Pengungkapan AI
+**Dibantu AI (Claude):** penjelasan alur fetch, async/await, dan try/catch;
+contoh kode `ambilNotisia()`, `gambar()`, dan `tampilkan()`; pemecahan masalah
+(impor yang salah, fungsi yang belum dipanggil, cara menguji kegagalan jaringan);
+usulan isian tabel worksheet.
+
+**Saya kerjakan sendiri:** menyalin hasil Pertemuan 9, menyesuaikan kode ke halaman
+profil saya, menjalankan semua uji di DevTools (status, Content-Type, Block request URL,
+perintah Console), mengambil tangkapan layar, memeriksa hasilnya, dan mengisi worksheet.
+
+### Catatan untuk P13
+Pemilihan elemen, render dari data, event delegation, dan fetch akan diuji.
+`ambilNotisia` diimpor apa adanya di Pertemuan 11.
