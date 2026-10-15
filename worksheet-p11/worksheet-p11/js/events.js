@@ -1,25 +1,18 @@
 // events.js — pemasangan seluruh pendengar peristiwa.
-import { state, pilihKategori } from "./state.js";
+import { pilihKategori } from "./state.js";
 import {
   barisFilter, form, tombolKirim, aturan,
-  render, tandaiTombolAktif, periksaKolom, ambilIsiForm,
+  periksaKolom, ambilIsiForm,
 } from "./dom.js";
 
 export function pasangPendengar() {
-  // Klik filter kategori
+  // Klik filter: hanya memanggil pengubah state
   barisFilter.addEventListener("click", (event) => {
     const tombol = event.target.closest("button");
     if (!tombol) return;
-
     pilihKategori(tombol.dataset.kategori);
-    const terpilih = state.daftarProyek.filter(
-      (proyek) => state.kategoriAktif === "semua" || proyek.jenis === state.kategoriAktif
-    );
-    tandaiTombolAktif(tombol);
-    render(terpilih);
   });
 
-  // Mengetik di form
   form.addEventListener("input", (event) => {
     const item = aturan.find((a) => a.input === event.target);
     if (!item) return;
@@ -29,7 +22,6 @@ export function pasangPendengar() {
     tombolKirim.disabled = !semuaSah;
   });
 
-  // Kirim form
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 

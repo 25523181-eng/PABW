@@ -48,26 +48,37 @@ function buatKartu(proyek) {
   li.textContent = `${proyek.judul} — ${proyek.jenis}, ${proyek.tahun}${status}`;
   return li;
 }
+// Penanda tombol aktif digambar dari state, bukan disimpan di DOM
+function tandaiTombolAktif(kategoriAktif) {
+  document.querySelectorAll("#filter button").forEach((tombol) => {
+    tombol.classList.toggle("aktif", tombol.dataset.kategori === kategoriAktif);
+  });
+}
 
-export function render(daftar) {
-  wadah.textContent = "";
+// Daftar yang tampil dihitung dari state
+function saring(state) {
+  return state.daftarProyek.filter(
+    (proyek) => state.kategoriAktif === "semua" || proyek.jenis === state.kategoriAktif
+  );
+}
 
-  if (daftar.length === 0) {
+export function render(state) {
+  tandaiTombolAktif(state.kategoriAktif);
+  wadah.textContent = "";                       // 1. kosongkan
+
+  const tampil = saring(state);                 // dari state, bukan argumen
+  if (tampil.length === 0) {                    // 2. keadaan kosong
     kosong.hidden = false;
     return;
   }
   kosong.hidden = true;
 
   const fragmen = document.createDocumentFragment();
-  daftar.forEach((proyek) => fragmen.append(buatKartu(proyek)));
-  wadah.append(fragmen);
+  tampil.forEach((proyek) => fragmen.append(buatKartu(proyek)));
+  wadah.append(fragmen);                        // 3. isi ulang
 }
 
-export function tandaiTombolAktif(tombolAktif) {
-  document.querySelectorAll("#filter button").forEach((tombol) => {
-    tombol.classList.toggle("aktif", tombol === tombolAktif);
-  });
-}
+
 
 // ---------- Validasi form (tampilan galat) ----------
 form.noValidate = true;
