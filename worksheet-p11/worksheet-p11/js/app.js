@@ -13,6 +13,3 @@ if (simpanan !== null) {
 tampilkanProfil();
 render(state);
 pasangPendengar();
-
-window.state = state;     // sementara, hapus setelah uji
-window.render = render;   // sementara, hapus setelah uji
