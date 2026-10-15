@@ -75,3 +75,23 @@ Sesuai ketentuan kejujuran akademik dan aturan PABW Pertemuan 9:
     - Penulisan fungsi logika murni dan manipulasi DOM pada `js/app.js` dan `js/dom.js`.
    - Penerapan logika *event delegation* dan penyaringan array (`filter()`).
    - Membantu memformulasikan struktur penulisan dokumentasi dan deklarasi AI untuk berkas `README.md`.
+
+// pertemuan 10
+
+## Pertemuan 11 — Modul, State, dan Penyimpanan Klien
+
+### 1. Deklarasi AI
+- **Bagian yang dibantu AI:** 
+  - Penjelasan dan penanganan *try/catch* serta pemeriksaan nomor skema versi pada `localStorage` (Lembar E).
+  - meminta rekomendasi tata letak dan source kode dari 2 file js yang sudah ada (dom.js & app.js) untuk migrasi menjadi 5 file js 
+  - Verifikasi pembagian modul ES (`export`/`import`) serta debugging galat impor di peramban.
+- **Bagian yang dikerjakan sendiri:** 
+  - Pemisahan berkas menjadi 5 modul (`data.js`, `state.js`, `dom.js`, `events.js`, `app.js`).
+  - Pembuatan objek `state` tunggal dan fungsi pengubahnya (`pilihKategori`).
+  - Penambahan tombol reset/atur ulang dan pembuatan elemen di HTML.
+  - Pengujian manual melalui Console peramban (*browser console*).
+
+### 2. Lingkungan Pengembangan (Node.js & npm)
+Dipersiapkan untuk Pertemuan 12:
+- **Node.js version:** `node -v` (silakan ganti dengan versi dari terminal Anda, contoh: `v20.18.0`)
+- **npm version:** `npm -v` (silakan ganti dengan versi dari terminal Anda, contoh: `10.8.2`)
