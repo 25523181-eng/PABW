@@ -1,16 +1,46 @@
-import { daftarProyek } from "./app.js";
+// dom.js — seluruh sentuhan ke halaman: pemilih, render, kelas, validasi tampilan.
+import { profil, formatKeahlian } from "./data.js";
 
-const wadah       = document.querySelector("#daftar");
-const barisFilter = document.querySelector("#filter");
-const kosong      = document.querySelector("#pesan-kosong");
+// ---------- Pemilih ----------
+export const wadah       = document.querySelector("#daftar");
+export const barisFilter = document.querySelector("#filter");
+const kosong             = document.querySelector("#pesan-kosong");
 
-const form       = document.querySelector("form");
-const inputNama  = document.querySelector("#nama");
-const inputEmail = document.querySelector("#email");
-const inputNim   = document.querySelector("#nim");
-const inputPesan = document.querySelector("#pesan");
+export const form        = document.querySelector("form");
+const inputNama          = document.querySelector("#nama");
+const inputEmail         = document.querySelector("#email");
+const inputNim           = document.querySelector("#nim");
+const inputPesan         = document.querySelector("#pesan");
+export const tombolKirim = form.querySelector('button[type="submit"]');
 
-// B.1 
+// ---------- Identitas (dipindah dari app.js) ----------
+function pasangTeks(selektor, teks) {
+  const elemen = document.querySelector(selektor);
+  if (elemen === null) {
+    console.error(`Elemen "${selektor}" tidak ditemukan di HTML`);
+    return;
+  }
+  elemen.textContent = teks;
+}
+
+export function tampilkanProfil() {
+  document.title = `${profil.nama} — PABW 2026/2027`;
+  pasangTeks("header h1", profil.nama);
+  pasangTeks(".tagline", profil.peran);
+  pasangTeks("#keahlian", `Keahlian: ${formatKeahlian(profil.keahlian)}`);
+
+  const infoKaki = document.querySelector(".kaki p");
+  if (infoKaki !== null) {
+    const waktu = document.createElement("time");
+    waktu.dateTime = "2026";
+    waktu.textContent = "2026";
+    infoKaki.replaceChildren(`${profil.nama} · ${profil.nim} · `, waktu);
+  } else {
+    console.error('Elemen ".kaki p" tidak ditemukan di HTML');
+  }
+}
+
+// ---------- Daftar proyek ----------
 function buatKartu(proyek) {
   const li = document.createElement("li");
   li.className = "kartu";
@@ -19,8 +49,7 @@ function buatKartu(proyek) {
   return li;
 }
 
-// B.2 + D.1 
-function render(daftar) {
+export function render(daftar) {
   wadah.textContent = "";
 
   if (daftar.length === 0) {
@@ -34,35 +63,16 @@ function render(daftar) {
   wadah.append(fragmen);
 }
 
-// C.2
-function tandaiTombolAktif(tombolAktif) {
+export function tandaiTombolAktif(tombolAktif) {
   document.querySelectorAll("#filter button").forEach((tombol) => {
     tombol.classList.toggle("aktif", tombol === tombolAktif);
   });
 }
 
-// C.1
-barisFilter.addEventListener("click", (event) => {
-  const tombol = event.target.closest("button");
-  if (!tombol) return;
+// ---------- Validasi form (tampilan galat) ----------
+form.noValidate = true;
 
-  const kategori = tombol.dataset.kategori;
-  const terpilih = daftarProyek.filter(
-
-    (proyek) => kategori === "semua" || proyek.jenis === kategori
-    
-  );
-  tandaiTombolAktif(tombol);
-  render(terpilih);
-});
-
-render(daftarProyek);
-// D.2 — validasi form
-const tombolKirim = form.querySelector('button[type="submit"]');
-form.noValidate = true; // tanpa ini, gelembung bawaan peramban muncul lebih dulu
-
-// Satu aturan per kolom: cara memeriksa dan pesan yang menyebut cara memperbaiki
-const aturan = [
+export const aturan = [
   {
     input: inputNama,
     sah: (nilai) => nilai !== "",
@@ -85,7 +95,6 @@ const aturan = [
   },
 ];
 
-// Siapkan satu tempat pesan galat di bawah tiap kolom
 aturan.forEach((item) => {
   const galat = document.createElement("span");
   galat.id = `${item.input.id}-galat`;
@@ -94,13 +103,11 @@ aturan.forEach((item) => {
   item.input.after(galat);
   item.galat = galat;
 
-  // hubungkan ke kolom untuk pembaca layar (NIM sudah punya aria-describedby)
   const lama = item.input.getAttribute("aria-describedby");
   item.input.setAttribute("aria-describedby", lama ? `${lama} ${galat.id}` : galat.id);
 });
 
-// Periksa satu kolom dan tampilkan atau sembunyikan pesannya
-function periksaKolom(item) {
+export function periksaKolom(item) {
   const sah = item.sah(item.input.value.trim());
   item.galat.textContent = sah ? "" : item.pesan;
   item.galat.hidden = sah;
@@ -112,31 +119,11 @@ function periksaKolom(item) {
   return sah;
 }
 
-// Saat mengetik: periksa kolom yang berubah, lalu atur tombol kirim
-form.addEventListener("input", (event) => {
-  const item = aturan.find((a) => a.input === event.target);
-  if (!item) return;
-
-  periksaKolom(item);
-  const semuaSah = aturan.every((a) => a.sah(a.input.value.trim()));
-  tombolKirim.disabled = !semuaSah;
-});
-
-// Saat dikirim
-form.addEventListener("submit", (event) => {
-  event.preventDefault(); // baris pertama: halaman tidak dimuat ulang
-
-  const hasil = aturan.map(periksaKolom); // periksa semua kolom sekaligus
-  const bermasalah = aturan.find((_, i) => !hasil[i]);
-  if (bermasalah) {
-    bermasalah.input.focus(); // pindahkan fokus ke kolom pertama yang bermasalah
-    return;
-  }
-
-  console.log("Form sah:", {
+export function ambilIsiForm() {
+  return {
     nama: inputNama.value.trim(),
     email: inputEmail.value.trim(),
     nim: inputNim.value.trim(),
     pesan: inputPesan.value.trim(),
-  });
-});
+  };
+}
