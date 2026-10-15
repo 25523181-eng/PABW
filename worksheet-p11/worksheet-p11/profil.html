@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--
+  KERANGKA PROFIL — PABW 2026/2027 — Pertemuan 8
+  Identitas, daftar karya, keahlian, dan footer diisi oleh js/app.js dari data.
+  Struktur, landmark, label, dan alt tidak diubah.
+-->
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Judul sementara; js/app.js menggantinya dengan nama dari data profil. -->
+  <title>Profil — PABW 2026/2027</title>
+  <meta name="description" content="Halaman profil mahasiswa PABW: tentang saya, karya, dan kontak.">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/komponen.css">
+  <link rel="stylesheet" href="css/responsif.css">
+  <link rel="stylesheet" href="css/tema.css">
+</head>
+<body class="page">
+  <a class="lewati" href="#utama">Lewati ke konten utama</a>
+
+  <header class="kepala">
+    <input type="checkbox" id="tema" class="pengalih-tema">
+    <label for="tema" class="tombol-tema">Tema gelap</label>
+    <!-- Nama dan tagline diisi oleh js/app.js -->
+    <h1>Memuat…</h1>
+    <p class="tagline"></p>
+    <nav aria-label="Navigasi utama">
+      <ul class="navlink">
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#karya">Karya</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="utama">
+
+    <section id="tentang">
+      <h2>Tentang saya</h2>
+
+      <figure class="foto">
+        <img src="media/foto-profil.png"
+             alt="Foto diri Umar Abdillah memakai kemeja putih."
+             width="480" height="480" loading="lazy">
+        <figcaption>Foto profil — ganti dengan milik Anda sendiri.</figcaption>
+      </figure>
+
+      <p>Saya mahasiswa Program Studi S1 reguler Informatika Universitas Islam Indonesia.
+         Saya tertarik pada pengembangan web, khususnya bagian tampilan css dan kerangka html
+         karena di sana saya bisa bereksperimen dan membuat keputusan teknis langsung terlihat hasilnya.</p>
+
+      <!-- Keahlian diisi oleh js/app.js -->
+      <p id="keahlian"></p>
+
+      <div class="table-wrap" role="region" aria-label="Tabel kegiatan" tabindex="0">
+        <table>
+          <caption>Kegiatan yang saya ikuti semester ini</caption>
+          <thead>
+            <tr>
+              <th scope="col">Kegiatan</th>
+              <th scope="col">Peran</th>
+              <th scope="col">Waktu</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Praktikum PABW</th>
+              <td>Peserta</td>
+              <td><time datetime="2026-09">September 2026</time></td>
+            </tr>
+            <tr>
+              <th scope="row">Kelas Terbuka Kampus</th>
+              <td>Peserta</td>
+              <td><time datetime="2026-10">Oktober 2026</time></td>
+            </tr>
+            <tr>
+              <th scope="row">Tim LesGo</th>
+              <td>Anggota</td>
+              <td><time datetime="2026">september-desember 2026</time></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+<section id="karya">
+  <h2>Karya saya</h2>
+
+  <div id="filter">
+    <button type="button" data-kategori="semua" class="aktif">Semua</button>
+    <button type="button" data-kategori="web">Web</button>
+    <button type="button" data-kategori="desain">Desain</button>
+    <button type="button" data-kategori="aplikasi">Aplikasi</button>
+  </div>
+
+  <ul id="daftar"></ul>
+  <p id="pesan-kosong" hidden>Tidak ada proyek pada kategori itu.</p>
+</section>
+
+    <section id="kontak">
+      <h2>Hubungi saya</h2>
+      <p>Isi formulir berikut. Semua kolom bertanda wajib harus diisi.</p>
+
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Data pengirim</legend>
+
+          <p>
+            <label for="nama">Nama lengkap</label>
+            <input id="nama" name="nama" type="text"
+                   autocomplete="name" required>
+          </p>
+
+          <p>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email"
+                   autocomplete="email" required>
+          </p>
+
+          <p>
+            <label for="nim">NIM</label>
+            <input id="nim" name="nim" type="text" inputmode="numeric"
+                   pattern="[0-9]{8}" aria-describedby="nim-bantuan" required
+                   value="25523181">
+            <span id="nim-bantuan">Delapan digit angka, contoh 25523181.</span>
+          </p>
+
+          <p>
+            <label for="pesan">Pesan</label>
+            <textarea id="pesan" name="pesan" rows="4" required></textarea>
+          </p>
+
+          <button type="submit">Kirim</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <section id="tanya-jawab">
+      <h2>Tanya jawab</h2>
+
+      <details>
+        <summary>Apa yang sedang saya pelajari?</summary>
+        <p>CSS dan cara menyusun tampilan yang konsisten lewat token.</p>
+      </details>
+      <details>
+        <summary>Alat apa yang saya pakai sehari-hari?</summary>
+        <p>VS Code dan Chrome. DevTools saya buka setiap kali mengerjakan tampilan.</p>
+      </details>
+    </section>
+
+    <section id="galeri">
+      <h2>Galeri</h2>
+      <ul class="galeri">
+        <li>
+          <figure>
+            <img src="media/karya-1.png"
+                 alt="Tangkapan layar Prototype Aption yang saya buat."
+                 width="640" height="400" loading="lazy">
+            <figcaption>Halaman Prototype Aption, pemikiran desain.</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="media/karya-2.png"
+                 alt="Tangkapan layar aplikasi SmartUMKM yang saya buat."
+                 width="640" height="400" loading="lazy">
+            <figcaption>Aplikasi Pengelola keuangan dan stok untuk UMKM.</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="media/karya-3.png"
+                 alt="Tangkapan layar dokumentasi komponen UI dan desain token."
+                 width="640" height="400" loading="lazy">
+            <figcaption>Dokumentasi Sistem Desain UI Profil.</figcaption>
+          </figure>
+        </li>
+      </ul>
+    </section>
+
+    <section id="lini-masa">
+      <h2>Perjalanan saya</h2>
+      <ol class="lini">
+        <li><time datetime="2025-09">September 2025</time> — mulai kuliah di Informatika UII.</li>
+        <li><time datetime="2025-09">September 2025</time> — membangun antarmuka pengguna menggunakan Figma.</li>
+        <li><time datetime="2026-09">September 2026</time> — membangun halaman profil ini.</li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer class="kaki">
+    <!-- Nama, NIM, dan tahun diisi oleh js/app.js -->
+    <p></p>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/dom.js"></script>
+</body>
+</html>
