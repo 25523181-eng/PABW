@@ -6,9 +6,9 @@ export const profil = {
 };
  
 export const daftarProyek = [
-  { judul: "LesGo", tahun: 2026, jenis: "web", selesai: false },
-  { judul: "Prototype Aption", tahun: 2025, jenis: "desain", selesai: true },
-  { judul: "SmartUMKM", tahun: 2026, jenis: "aplikasi", selesai: true },
+  { id: 1, judul: "LesGo", tahun: 2026, jenis: "web", selesai: false },
+  { id: 2, judul: "Prototype Aption", tahun: 2025, jenis: "desain", selesai: true },
+  { id: 3, judul: "SmartUMKM", tahun: 2026, jenis: "aplikasi", selesai: true },
 ];
  
 export function buatPerkenalan({ nama, peran }) {
